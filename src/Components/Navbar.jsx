@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 // import './Navbar.css';
-import Logo from "./assets/—Pngtree—simple house logo design_3633814 (1).png";
+import Logo from "../assets/—Pngtree—simple house logo design_3633814 (1).png";
 import { useState } from 'react';
 const Navbar = () => {
   const [showPopup, setShowPopup] = useState(false);
