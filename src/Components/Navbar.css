@@ -1,17 +1,25 @@
-/* .navbar{
+.navbar{
     width: 100%;
     background-color: black;
    color: white;
-   border-radius: 0 0 5px 5px;
+  
 }
 .navbar{
     display: flex;
     justify-content: space-between;
-    padding: 20px 30px;
+    padding: 10px 30px;
     align-items: center;
 }
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+.navbar .logo  img{
+    width: 40px;
+    height: 40px;
+}
 .navbar .logo h2{
-   font-size: 20px;
+   font-size: 30px;
    font-weight: bold;
 }
 .navbar .nav-links ul{
@@ -31,21 +39,23 @@
     transition: 0.3s;
 }
 .active-link{
-    color: rgb(0, 188, 85);
+    color: rgb(15, 210, 103);
     text-decoration: underline;
 }
 .navbar .nav-links ul li a:hover{
     background-color: rgb(0, 188, 85);
     color: white;
+
 }
-.navbar .nav-btns .signup-btn{
+.navbar .nav-btns a{
     background-color: rgb(0, 188, 85);
    padding: 5px 10px;
    border-radius: 10px;
    font-size: 20px;
    font-weight: bold;
    transition: 0.3s;
+   text-decoration: none;
 }
-.navbar .nav-btns .signup-btn:hover{
+.navbar .nav-btns a:hover{
     background-color: rgb(104, 102, 102);
-} */
+}

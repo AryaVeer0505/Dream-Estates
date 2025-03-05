@@ -5,6 +5,7 @@ import Listing from './Pages/Listing'
 import About from './Pages/About'
 import Contact from './Pages/Contact'
 import Login from './Pages/Login'
+import Register from './Pages/Register'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 const router=createBrowserRouter([
   {
@@ -40,6 +41,13 @@ const router=createBrowserRouter([
     element:<>
       <Navbar/>
       <Login/>
+    </>
+  },
+  {
+    path:'/register',
+    element:<>
+      <Navbar/>
+      <Register/>
     </>
   },
 ])
