@@ -1,0 +1,240 @@
+/* General Styles */
+.home-container {
+    font-family: Arial, sans-serif;
+}
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    padding: 0 10%;
+    color: white;
+    gap: 20px;
+}
+
+/* Semi-transparent overlay for better text visibility */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Light overlay for contrast */
+    z-index: 0;
+}
+
+/* Hero Content */
+.hero-left {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+}
+
+.hero-right img {
+    max-width: 100%;
+    height: auto;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    color: black;
+}
+
+.hero p {
+    font-size: 18px;
+    color: black;
+    line-height: 1.5;
+}
+
+/* CTA Button */
+.cta-btn {
+    background-color: #00bc55;
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.cta-btn:hover {
+    background-color: #00964e;
+    transform: scale(1.05);
+}
+
+/* FEATURED LISTINGS */
+.featured-listings {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f8f8;
+}
+
+.featured-listings h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Grid Layout for Properties */
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Property Card */
+.property-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Property Card Images */
+.property-card img {
+    width: 100%;
+    height: 250px; /* Ensures all images have a uniform height */
+    object-fit: cover; /* Prevents stretching or squeezing */
+    border-radius: 8px;
+}
+
+.property-card h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.property-card p {
+    color: gray;
+    flex-grow: 1; /* Ensures text content takes up remaining space */
+}
+
+/* Price */
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* View Details Button */
+.view-details {
+    color: rgb(0, 188, 85);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.view-details:hover {
+    text-decoration: underline;
+}
+
+/* Hover Effect on Property Cards */
+.property-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* CONTACT SECTION */
+.contact-section {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.contact-section h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.contact-section p {
+    font-size: 18px;
+}
+
+.contact-section .cta-btn {
+    background-color: #00bc55;
+    margin-top: 15px;
+}
+
+.contact-section .cta-btn:hover {
+    background-color: #00964e;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+        height: auto;
+    }
+
+    .hero-left {
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .cta-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .cta-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .property-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .cta-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .property-card {
+        padding: 10px;
+    }
+
+    .property-card img {
+        height: 200px;
+    }
+}

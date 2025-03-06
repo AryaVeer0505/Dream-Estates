@@ -3,7 +3,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Flex } from 'antd';
 import { useNavigate } from 'react-router'
 import { NavLink } from 'react-router-dom';
-import './login.css'
+import '../assets/css/login.css'
 const Login = () => {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);

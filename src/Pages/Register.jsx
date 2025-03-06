@@ -3,7 +3,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Flex } from 'antd';
 import { useNavigate } from 'react-router'
 import { NavLink } from 'react-router-dom';
-import './Register.css'
+import '../assets/css/Register.css'
 import axios from "axios";
 
 
