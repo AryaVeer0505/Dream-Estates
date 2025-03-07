@@ -10,7 +10,7 @@ import axios from "axios";
 const Register = () => {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
-    axios.post("http://localhost:3000/api/auth/register",values).then((response)=>console.log(response))
+    axios.post("http://localhost:5000/api/auth/register",values).then((response)=>console.log(response))
   };
   
   const navigate=useNavigate()
