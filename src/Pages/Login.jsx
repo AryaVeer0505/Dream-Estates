@@ -1,14 +1,85 @@
+// import React, { useState } from 'react'
+// import { Link, NavLink,useNavigate } from 'react-router'
+// import axios from 'axios'
+
+// const Register = () => {
+
+//   const [email,setEmail]=useState()
+//   const [password,setPassword]=useState()
+ 
+
+//   const navigate=useNavigate()
+//   const handleNavigate=()=>{
+//         navigate("/register")
+//   }
+//  const handleSubmit=(e)=>{
+//     e.preventDefault()
+//     axios.post('http://localhost:5001/api/auth/login',{email,password})
+//     .then(result=>{console.log("Result",result)
+//       if(result.data==="Success"){
+//       navigate('/')
+//       }
+//     })
+//     .then(err=>console.log("error",err))
+//  }
+//   return (
+//     <div>
+//       <div className="w-full h-screen bg-[#222] flex justify-center items-center">
+//         <div className="w-100 bg-black text-white p-6 rounded-lg shadow-2xl  items-center justify-center">
+//           <h1 className='text-center font-bold text-3xl mb-7'>Login</h1>
+//           <form className='flex flex-col' onSubmit={handleSubmit}>
+    
+    
+//           <div className='mb-4'>
+//             <input type="email" placeholder='Email' className='border-0 rounded-md outline-0 p-1 w-full pl-2  bg-gray-700 focus:bg-gray-600 focus:outline-0 transition ease-in-out duration-150 placeholder-gray-300' required name="email" onChange={(e)=>setEmail(e.target.value)}/>
+//           </div>
+//           <div className='mb-4' >
+            
+//             <input type="password" placeholder='Password' className='border-0 rounded-md outline-0 p-1 w-full pl-2  bg-gray-700 focus:bg-gray-600 focus:outline-0 transition ease-in-out duration-150 placeholder-gray-300' required name="password" onChange={(e)=>setPassword(e.target.value)}/>
+//           </div>
+         
+//           <button className='bg-green-500 text-white text-center py-1 px-2 text-lg rounded-lg font-bold hover:text-white hover:bg-gray-700 transition ease-in-out duration-150 block ' type='submit'>Login</button>
+//           <p className='mt-4 text-center'>Don't have an Account? <NavLink to='/register' onClick={handleNavigate} className="text-green-500">Register</NavLink></p>
+//           </form>
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default Register
+
+
 import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Flex } from 'antd';
+import { Button, Checkbox, Form, Input, Flex, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
   const navigate = useNavigate();
-
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+  const onFinish =async (values) => {
+    console.log("Data Submitted: ", values);
+      try{
+        const {email,password} = values;
+     const response= await axios
+      .post("http://localhost:5001/api/auth/login", {email,password})
+        if(response.data.success){
+          message.success(response.data.message)
+        navigate("/");
+        console.log("Successfully login")
+        }
+        else{
+          message.error(response.data.message)
+          console.log("Error",response.data.message)
+        }
+      
+    }
+    catch(error){
+      console.log("Error message",error.response?.data)
+      message.error(error.response?.data?.message || "login failed")
+    }    
   };
 
   return (
@@ -25,13 +96,13 @@ const Login = () => {
         >
 
           <Form.Item
-            name="username"
-            rules={[{ required: true, message: 'Please input your Username!' }]}
+            name="email"
+            rules={[{ required: true, message: 'Please input your email!' }]}
           >
             <Input 
               prefix={<UserOutlined className="text-gray-500" />} 
-              placeholder="Username or Email" 
-              className="py-2 px-4 w-full border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200"
+              placeholder="Email" 
+              className="py-2 px-4 w-full border border-gray-300 rounded-md focus:border-green-500 focus:ring focus:ring-blue-200"
             />
           </Form.Item>
 
@@ -43,14 +114,14 @@ const Login = () => {
               prefix={<LockOutlined className="text-gray-500" />} 
               type="password" 
               placeholder="Password" 
-              className="py-2 px-4 w-full border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200"
+              className="py-2 px-4 w-full border border-gray-300 rounded-md focus:border-green-500 focus:ring focus:ring-blue-200"
             />
           </Form.Item>
 
           <Form.Item>
             <Flex justify="space-between" align="center">
               <Checkbox className="text-gray-600">Remember me</Checkbox>
-              <a href="#" className="text-blue-600 hover:underline">Forgot password?</a>
+              <a href="#" className="text-green-600 hover:underline">Forgot password?</a>
             </Flex>
           </Form.Item>
           <Form.Item>
@@ -58,7 +129,7 @@ const Login = () => {
               block 
               type="primary" 
               htmlType="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md w-full transition"
+              className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md w-full transition"
             >
               Log in
             </Button>
@@ -68,7 +139,7 @@ const Login = () => {
             Don't have an account? 
             <NavLink 
               to="/register" 
-              className="text-blue-600 hover:underline ml-1"
+              className="text-green-600 hover:underline ml-1"
             >
               Register now!
             </NavLink>

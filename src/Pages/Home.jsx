@@ -25,7 +25,7 @@ const Home = () => {
 
 
         <div className="relative z-10 flex justify-center">
-          <img src={homeImg} alt="Home" className="w-full max-w-sm md:max-w-xl" />
+          <img src={homeImg} alt="Home" className="w-full max-w-xl md:max-w-2xl" />
         </div>
       </div>
 

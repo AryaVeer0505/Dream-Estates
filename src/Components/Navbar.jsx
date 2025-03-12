@@ -4,7 +4,7 @@ import Logo from "../assets/—Pngtree—simple house logo design_3633814 (1).pn
 
 const Navbar = () => {
   const getActiveClass = ({ isActive }) => 
-    isActive ? "text-green-400 underline font-bold bg-black py-2 px-3 text-xl" : "text-xl text-white font-bold hover:bg-green-400 rounded-xl py-2 px-3";
+    isActive ? "text-green-400 underline font-bold bg-black py-1 px-3 text-xl rounded-xl hover:bg-green-500 hover:text-white hover:rounded-xl transition ease-in-out duration-150" : "text-xl text-white font-bold hover:bg-green-500 rounded-xl py-1 px-3 text-white transition ease-in-out duration-150";
 
   return (
     <nav className="w-full bg-black text-white flex justify-between items-center py-3 px-6">
