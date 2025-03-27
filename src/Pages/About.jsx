@@ -33,8 +33,6 @@ const About = () => {
             To connect individuals and families with homes they love through personalized service and exceptional listings.
           </p>
         </div>
-
-        {/* Values */}
         <div className="bg-white shadow-md rounded-lg p-6 text-center">
           <h2 className="text-2xl font-bold text-green-500 mb-3">Our Values</h2>
           <p className="text-gray-600 leading-relaxed">
@@ -42,7 +40,6 @@ const About = () => {
           </p>
         </div>
 
-        {/* Expertise */}
         <div className="bg-white shadow-md rounded-lg p-6 text-center">
           <h2 className="text-2xl font-bold text-green-500 mb-3">Our Expertise</h2>
           <p className="text-gray-600 leading-relaxed">
@@ -51,7 +48,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* CTA Section */}
       <div className="text-center py-12 mt-16 bg-green-500 text-white">
         <h3 className="text-3xl font-bold">Start Your Journey Today</h3>
         <p className="text-lg mt-2">Let us help you find a place you'll love to call home.</p>

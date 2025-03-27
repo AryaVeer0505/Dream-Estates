@@ -8,6 +8,8 @@ import Listing from './Pages/Listing.jsx'
 import Contact from './Pages/Contact.jsx'
 import About from './Pages/About.jsx'
 import Navbar from './Components/Navbar.jsx'
+import Property from './Pages/property.jsx'
+
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -19,6 +21,8 @@ createRoot(document.getElementById('root')).render(
       <Route path='/listing' element={<Listing/>}/>
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/about' element={<About/>}/>
+      <Route path='/property/:id' element={<Property/>}/>
+
      </Routes>
   </BrowserRouter>,
 )
