@@ -60,6 +60,7 @@ const Navbar = () => {
         <li><NavLink to="/about" className={getActiveClass}>About</NavLink></li>
         <li><NavLink to="/contact" className={getActiveClass}>Contact</NavLink></li>
         <li><NavLink to="/property/:id" className={getActiveClass}>Add Property</NavLink></li>
+        <li><NavLink to="/login" className="block md:hidden bg-green-500 text-white px-4 py-2 rounded-lg text-lg font-bold transition duration-300 hover:bg-gray-600">Login</NavLink></li>
       </ul>
       <div className="hidden md:block">
         <NavLink

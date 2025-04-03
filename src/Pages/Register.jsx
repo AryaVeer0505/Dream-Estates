@@ -19,7 +19,6 @@ const Register = () => {
     setLoading(true); 
     try {
       const response = await axios.post("http://localhost:5001/api/auth/register", values);
-
       showSuccessToast("Registration Successful! Redirecting to login...");
       setTimeout(() => {
         navigate("/login");
