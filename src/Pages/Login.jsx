@@ -3,9 +3,10 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import Loader from '../Components/Loader';
+import { baseURL } from '../../config';
+import axiosInstance from '../../axiosInnstance.js'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const Login = () => {
 
     try {
       const { email, password } = values;
-      const response = await axios.post('http://localhost:5001/api/auth/login', { email, password });
+      const response = await axiosInstance.post(`${baseURL}/api/auth/login`, { email, password });
 
       if (response.data.success) {
         message.success(response.data.message);
@@ -27,6 +28,7 @@ const Login = () => {
           localStorage.setItem('username', response.data.payload.username || '');
           localStorage.setItem('email', response.data.payload.email || '');
         }
+        
 
         setTimeout(() => {
           navigate('/');

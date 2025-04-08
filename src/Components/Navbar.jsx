@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { MenuOutlined, CloseOutlined } from '@ant-design/icons';
-import Logo from "../assets/—Pngtree—simple house logo design_3633814 (1).png";
+import Logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

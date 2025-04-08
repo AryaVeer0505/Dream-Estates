@@ -55,15 +55,6 @@ const Home = () => {
         </div>
       </div>
 
-  
-      <div className="w-full text-center py-12 bg-gray-900 text-white">
-        <h2 className="text-3xl font-bold">Get in Touch</h2>
-        <p className="mt-3 text-lg">Have questions? Contact us to find the perfect home for you.</p>
-        <NavLink to="/contact" className="mt-5 inline-block bg-green-500 text-white px-6 py-3 text-lg font-semibold rounded-lg transition hover:bg-green-600 transform hover:scale-105">
-          Contact Us
-        </NavLink>
-      </div>
-
     </div>
   );
 };
