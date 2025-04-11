@@ -17,10 +17,7 @@ const Contact = () => {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await axios.post(
-        'http://localhost:5001/api/contact_us/contact',
-        values
-      );
+      const response = await axios.post('http://localhost:5001/api/contact_us/contact',values);
       console.log('Form Submitted:', response.data);
       toast.success('Your message has been sent successfully!', {
         position: 'top-center',
@@ -46,7 +43,7 @@ const Contact = () => {
         <Loader />
       ) : (
         <div className="min-h-screen bg-gray-50">
-          {/* Header */}
+       
           <div className="bg-green-600 text-white py-16 text-center px-4">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
             <p className="text-lg max-w-2xl mx-auto">
@@ -54,9 +51,9 @@ const Contact = () => {
             </p>
           </div>
 
-          {/* Info + Form Section */}
+    
           <div className="flex flex-col md:flex-row justify-center items-start gap-8 max-w-6xl mx-auto px-4 py-12">
-            {/* Left - Info */}
+   
             <div className="flex-1 text-gray-700 space-y-4">
               <h2 className="text-2xl font-semibold">Get in Touch</h2>
               <p>
@@ -72,8 +69,6 @@ const Contact = () => {
                 Prefer direct contact? Email us at <span className="font-semibold">support@yourrealestate.com</span>
               </p>
             </div>
-
-            {/* Right - Form */}
             <div className="flex-1 w-full">
               <Card
                 bordered={false}
@@ -139,7 +134,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Newsletter Section */}
           <div className="bg-gray-100">
             <Newsletter />
           </div>

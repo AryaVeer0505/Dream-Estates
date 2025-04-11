@@ -4,21 +4,24 @@ import { useNavigate } from 'react-router-dom';
 
 const AddProperty = () => {
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     title: '',
     location: '',
     price: '',
     type: '',
-    image: '',
+    images: [], 
     description: '',
   });
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === 'image') {
+
+    if (name === 'images') {
+      const selectedFiles = Array.from(files).slice(0, 5); 
       setFormData((prev) => ({
         ...prev,
-        image: files[0],
+        images: selectedFiles,
       }));
     } else {
       setFormData((prev) => ({
@@ -42,7 +45,10 @@ const AddProperty = () => {
     form.append('price', formData.price);
     form.append('type', formData.type);
     form.append('description', formData.description);
-    form.append('image', formData.image);
+
+    formData.images.forEach((image, index) => {
+      form.append('images', image); 
+    });
 
     try {
       const res = await fetch('http://localhost:5001/api/properties', {
@@ -69,7 +75,18 @@ const AddProperty = () => {
   };
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    let user = null;
+
+    try {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        user = JSON.parse(storedUser);
+      }
+    } catch (error) {
+      console.error('Error parsing user data', error);
+      user = null;
+    }
+
     if (!user || user.role !== 'owner') {
       Swal.fire({
         title: 'Access Denied',
@@ -154,12 +171,14 @@ const AddProperty = () => {
         </div>
 
         <div>
-          <label className="block text-gray-700 font-semibold mb-2">Add Image</label>
+          <label className="block text-gray-700 font-semibold mb-2">Add Images (Max 5)</label>
           <input
             type="file"
-            name="image"
+            name="images"
+            multiple
+            accept="image/*"
             onChange={handleChange}
-            className="w-1/3 px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-400 focus:outline-none"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-400 focus:outline-none"
             required
           />
         </div>

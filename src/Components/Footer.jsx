@@ -75,7 +75,7 @@ const Footer = () => {
               </li>
               <li>
                 <NavLink 
-                  to="/properties" 
+                  to="/listing" 
                   className="text-gray-300 hover:text-white transition-colors"
                   activeClassName="text-blue-400 font-medium"
                 >
@@ -134,26 +134,22 @@ const Footer = () => {
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-start">
                 <MdLocationOn className="mt-1 mr-2 text-blue-400" />
-                <span>123 Real Estate Ave, Property City, PC 12345</span>
+                <span>Shimla</span>
               </li>
               <li className="flex items-center">
                 <MdPhone className="mr-2 text-blue-400" />
-                <span>+1 (555) 123-4567</span>
+                <span>7018800377</span>
               </li>
               <li className="flex items-center">
                 <MdEmail className="mr-2 text-blue-400" />
-                <span>info@realestatepro.com</span>
+                <span>aryaveerkanwar11458@gmail.com</span>
               </li>
             </ul>
           </div>
         </div>
-
-    
-
-        
         <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {currentYear} RealEstatePro. All rights reserved.
+            © {currentYear} DreamEstate. All rights reserved.
           </div>
           <div className="flex space-x-4 text-sm">
             <NavLink to="/privacy" className="text-gray-400 hover:text-white transition-colors">

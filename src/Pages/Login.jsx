@@ -32,16 +32,16 @@ const Login = () => {
         const { payload, token } = response.data;
 
         if (payload) {
-          localStorage.setItem('username', payload.username || '');
-          localStorage.setItem('email', payload.email || '');
-          localStorage.setItem('role', role);
+          localStorage.setItem('user', JSON.stringify({
+            username: payload.username || '',
+            email: payload.email || '',
+            role: role,
+          }));
         }
 
         if (token) {
-          localStorage.setItem('token', token); 
+          localStorage.setItem('token', token);
         }
-
-    
         window.dispatchEvent(new Event('loginStatusChanged'));
 
         setTimeout(() => {

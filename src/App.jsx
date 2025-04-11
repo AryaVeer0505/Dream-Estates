@@ -10,7 +10,7 @@ import Footer from './Components/Footer.jsx';
 import Property from './Pages/Property.jsx';
 import Profile from './Pages/Profile.jsx';
 import AddProperty from './Pages/AddProperty.jsx';
-import Dashboard from './AdminPannel/AdminDashboard.jsx';
+import AdminDashboard from './AdminPannel/AdminDashboard.jsx';
 
 const App = () => {
   const location = useLocation();
@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/property/:id" element={<Property />} />
         <Route path="/addProperty" element={<AddProperty />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/login/:role" element={<Login />} />
         <Route path="/register/:role" element={<Register />} />
       </Routes>

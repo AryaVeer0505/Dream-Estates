@@ -85,11 +85,23 @@ const AdminDashboard = () => {
         message.error("No token found. Please log in as admin.");
         return;
       }
-
-      const { confirmPassword, ...userData } = values;
-
-      await axios.post("http://localhost:5001/api/auth/register",values);
-
+  
+      const userData  = values;
+      console.log("Submitting user data:", values);
+  
+      const response = await axios.post(
+        "http://localhost:5001/api/auth/addUser",
+        userData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+  
+      console.log("Response:", response.data);
+  
       message.success("User added successfully!");
       setIsModalVisible(false);
       form.resetFields();
@@ -99,6 +111,7 @@ const AdminDashboard = () => {
       message.error(error.response?.data?.message || "Failed to add user");
     }
   };
+  
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -182,77 +195,63 @@ const AdminDashboard = () => {
       </Layout>
 
       <Modal
-        title="Add New User"
-        open={isModalVisible}
-        onCancel={handleCancel}
-        onOk={() => form.submit()}
-        okText="Add"
-        className="top-0"
-      >
-        <Form form={form} layout="vertical" onFinish={handleAddUser}>
-          <Form.Item
-            name="username"
-            label="Username"
-            rules={[{ required: true, message: "Please input a username" }]}
-          >
-            <Input />
-          </Form.Item>
+  title="Add New User"
+  open={isModalVisible}
+  onCancel={handleCancel}
+  footer={null}
+  className="top-0"
+>
+  <Form form={form} layout="vertical" onFinish={handleAddUser}>
+    <Form.Item name="username" label="Username" rules={[{ required: true }]}>
+      <Input />
+    </Form.Item>
 
-          <Form.Item
-            name="number"
-            label="Number"
-            rules={[{ required: true, message: "Please input a number" }]}
-          >
-            <Input />
-          </Form.Item>
+    <Form.Item name="number" label="Number" rules={[{ required: true }]}>
+      <Input />
+    </Form.Item>
 
-          <Form.Item
-            name="email"
-            label="Email"
-            rules={[{ required: true, message: "Please input an email" }]}
-          >
-            <Input />
-          </Form.Item>
+    <Form.Item name="email" label="Email" rules={[{ required: true }]}>
+      <Input />
+    </Form.Item>
 
-          <Form.Item
-            name="password"
-            label="Password"
-            rules={[{ required: true, message: "Please input a password" }]}
-          >
-            <Input.Password />
-          </Form.Item>
+    <Form.Item name="password" label="Password" rules={[{ required: true }]}>
+      <Input.Password />
+    </Form.Item>
 
-          <Form.Item
-            name="confirmPassword"
-            label="Confirm Password"
-            dependencies={["password"]}
-            rules={[
-              { required: true, message: "Please confirm your password" },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (!value || getFieldValue("password") === value) {
-                    return Promise.resolve();
-                  }
-                  return Promise.reject(new Error("Passwords do not match"));
-                },
-              }),
-            ]}
-          >
-            <Input.Password />
-          </Form.Item>
+    <Form.Item
+      name="confirmPassword"
+      label="Confirm Password"
+      dependencies={["password"]}
+      rules={[
+        { required: true, message: "Please confirm your password" },
+        ({ getFieldValue }) => ({
+          validator(_, value) {
+            if (!value || getFieldValue("password") === value) {
+              return Promise.resolve();
+            }
+            return Promise.reject(new Error("Passwords do not match"));
+          },
+        }),
+      ]}
+    >
+      <Input.Password />
+    </Form.Item>
 
-          <Form.Item
-            name="role"
-            label="Role"
-            rules={[{ required: true, message: "Please select a role" }]}
-          >
-            <Select placeholder="Select a role">
-              <Option value="user">User</Option>
-              <Option value="owner">Owner</Option>
-            </Select>
-          </Form.Item>
-        </Form>
-      </Modal>
+    <Form.Item name="role" label="Role" rules={[{ required: true }]}>
+      <Select>
+        <Option value="user">User</Option>
+        <Option value="owner">Owner</Option>
+      </Select>
+    </Form.Item>
+
+    <Form.Item>
+      <Button type="primary" htmlType="submit" className="bg-black w-full">
+        Add User
+      </Button>
+    </Form.Item>
+  </Form>
+</Modal>
+
     </Layout>
   );
 };
